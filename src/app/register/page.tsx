@@ -1,5 +1,8 @@
-import RegisterFrom from '@/components/modules/auth/register/RegisterFrom'
+
 import React from 'react'
+import RegisterFrom from '@/components/modules/auth/register/RegisterFrom';
+
+
 
 const page = () => {
   return (
