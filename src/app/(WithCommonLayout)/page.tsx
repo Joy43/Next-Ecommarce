@@ -1,12 +1,17 @@
-import { Button } from '@/components/ui/button'
+"use client";
+
+import { useUser } from "@/context/userContext";
 
 
-const Home = () => {
+
+const HomePage = () => {
+  const user = useUser();
+  console.log(user);
   return (
     <div>
-      <Button>Welcome</Button>
+      <h1>Welcome To NextMart Home Page</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default HomePage;
