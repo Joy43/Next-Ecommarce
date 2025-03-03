@@ -3,13 +3,14 @@ import { Input } from '../../input';
 import Image from 'next/image';
 
 const NEImageUploder = () => {
-    const [imageFiles,setImageFiles]=useState,<File[]| []>([]);
+    
+    const [imagePreview,setImagePreview]=useState<string[]>([]);
     const handleImageChange=(event:React.ChangeEvent<HTMLInputElement>)=>{
         const file=event.target.files![0];
         setImageFiles((prev)=>[...prev,file]);
         console.log(event.target.files);
         if(file){
-          const reader=FileReader();
+          const reader=new FileReader();
           reader.onloadent=()=>{
             setImagePreview((prev)=>[...prev,reader.result as string]);
           };
@@ -30,13 +31,13 @@ const NEImageUploder = () => {
       </label>
     <div>
       {
-        ImagePreview.map((printPreView,inx)=>{
-          <Image key={inx} src={preview} width={500} height={500} alt='image'/>
-        })
+        imagePreview.map((printPreView, inx) => (
+          <Image key={inx} src={printPreView} width={500} height={500} alt='image preview' />
+        ))
       }
     </div>
 
-      </Image>
+     
     </div>
   )
 }

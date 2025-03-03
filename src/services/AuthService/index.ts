@@ -5,6 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 import { FieldValues } from "react-hook-form";
 
+// -------------register user------------------
 
 export const registerUser = async (userData: FieldValues) => {
   try {
@@ -26,7 +27,7 @@ export const registerUser = async (userData: FieldValues) => {
     return Error(error);
   }
 };
-
+// -----------login user-----------
 export const loginUser = async (userData: FieldValues) => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/auth/login`, {
@@ -48,7 +49,7 @@ export const loginUser = async (userData: FieldValues) => {
     return Error(error);
   }
 };
-
+// ------current use ---------------
 export const getCurrentUser = async () => {
   const accessToken = (await cookies()).get("accessToken")!.value;
   let decodedData = null;
