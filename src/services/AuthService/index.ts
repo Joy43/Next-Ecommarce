@@ -61,7 +61,6 @@ export const getCurrentUser = async () => {
   }
 };
 // ---------capture google -----------
-
 export const reCaptchaTokenVerification = async (token: string) => {
   try {
     const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
@@ -80,3 +79,8 @@ export const reCaptchaTokenVerification = async (token: string) => {
     return Error(err);
   }
 };
+// ---------logout user-------
+export const logout=async()=>{
+
+(await cookies()).delete("accessToken Delete")
+}

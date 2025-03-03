@@ -9,7 +9,7 @@ const HomePage = () => {
   console.log(user);
   return (
     <div>
-      <h1>Welcome To NextMart Home Page</h1>
+      <h1 className="text-center">Welcome To NextMart Home Page</h1>
     </div>
   );
 };
