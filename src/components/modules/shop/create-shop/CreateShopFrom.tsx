@@ -39,7 +39,9 @@ export default function CreateShopForm() {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const servicesOffered = data?.servicesOffered
       .split(",")
+      // -----trim=> white space remove ------
       .map((service: string) => service.trim())
+      // ----filter service-------
       .filter((service: string) => service !== "");
 
     const modifiedData = {
@@ -66,7 +68,7 @@ export default function CreateShopForm() {
   };
 
   return (
-    <div className="border-2 border-gray-300 rounded-xl flex-grow max-w-2xl p-5 my-5">
+    <div className="mx-auto border-2 border-gray-300 rounded-xl flex-grow max-w-2xl p-5 my-5">
       <div className="flex items-center space-x-4 mb-5">
         <Logo />
         <div>
@@ -234,7 +236,7 @@ export default function CreateShopForm() {
                 )}
               />
             </div>
-
+{/* ---------condition wise image upload now--------------- */}
             {imagePreview.length > 0 ? (
               <ImagePreviewer
                 setImageFiles={setImageFiles}
