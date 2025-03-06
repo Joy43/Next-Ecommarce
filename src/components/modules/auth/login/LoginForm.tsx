@@ -18,6 +18,8 @@ import { loginUser, reCaptchaTokenVerification } from "@/services/AuthService";
 import { toast } from "sonner";
 import { loginSchema } from "./loginValidation";
 import { useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 
 export default function LoginForm() {
   const form = useForm({
@@ -25,16 +27,21 @@ export default function LoginForm() {
   });
 
   const [reCaptchaStatus, setReCaptchaStatus] = useState(false);
+  const serachParams=useSearchParams();
+
+  const router=useRouter();
+  const redirect=serachParams.get("redirect") ;
 
   const {
     formState: { isSubmitting },
   } = form;
-
+// --------------reCaptcha verification----------------
   const handleReCaptcha = async (value: string | null) => {
     try {
       const res = await reCaptchaTokenVerification(value!);
       if (res?.success) {
         setReCaptchaStatus(true);
+
       }
     } catch (err: any) {
       console.error(err);
@@ -46,6 +53,11 @@ export default function LoginForm() {
       const res = await loginUser(data);
       if (res?.success) {
         toast.success(res?.message);
+        if(redirect){
+          router.push(redirect)
+        }else{
+          router.push("/profile")
+        }
       } else {
         toast.error(res?.message);
       }

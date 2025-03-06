@@ -8,8 +8,8 @@ const HomePage = () => {
   const user = useUser();
   console.log(user);
   return (
-    <div>
-      <h1 className="text-center">Welcome To NextMart Home Page</h1>
+    <div className="container">
+      <h1 className="text-center">Welcome To Next-Ecommarce Home Page</h1>
     </div>
   );
 };

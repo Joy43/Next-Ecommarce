@@ -20,12 +20,6 @@ import { createShop } from "@/services/Shop";
 import { toast } from "sonner";
 import NMImageUploader from "@/components/ui/core/NEImageUploader";
 import ImagePreviewer from "@/components/ui/core/NEImageUploader/ImagePreviewer";
-
-
-
-
-
-
 export default function CreateShopForm() {
   const [imageFiles, setImageFiles] = useState<File[] | []>([]);
   const [imagePreview, setImagePreview] = useState<string[] | []>([]);
