@@ -1,11 +1,13 @@
+import ManageCategory from "@/components/modules/shop/category"
 
 
-const page = () => {
+
+const ProductCategoryPage = () => {
   return (
     <div>
-      
+      <ManageCategory/>
     </div>
   )
 }
 
-export default page
+export default ProductCategoryPage
