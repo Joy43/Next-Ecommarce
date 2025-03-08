@@ -28,7 +28,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { IBrand,ICategory } from "@/types";
+import { ICategory } from "@/types";
 import { getAllCategories } from "@/services/Category";
 import { getAllBrands } from "@/services/Brand";
 import { useRouter } from "next/navigation";
@@ -36,6 +36,7 @@ import { toast } from "sonner";
 import { addProduct } from "@/services/Product";
 import NMImageUploader from "@/components/ui/core/NEImageUploader";
 import ImagePreviewer from "@/components/ui/core/NEImageUploader/ImagePreviewer";
+import { IBrand } from "@/types/brand";
 
 export default function AddProductsForm() {
   const [imageFiles, setImageFiles] = useState<File[] | []>([]);

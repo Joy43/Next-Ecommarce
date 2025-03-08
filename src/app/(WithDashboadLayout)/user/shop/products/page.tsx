@@ -1,4 +1,6 @@
 import ManageProducts from "@/components/modules/shop/product";
+import { getAllProducts } from "@/services/Product";
+
 
 
 const ManageProductsPage = async () => {
