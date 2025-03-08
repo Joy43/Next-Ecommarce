@@ -1,9 +1,8 @@
 import { Button } from '@/components/ui/button'
 import CategoryCard from '@/components/ui/core/CategoryCard'
 import { getAllCategories } from '@/services/Category'
+import { ICategory } from '@/types'
 import Link from 'next/link'
-
-
 const Category = async() => {
     const {data:categories}=await getAllCategories()
   return (
@@ -18,7 +17,7 @@ const Category = async() => {
       </div>
       <div className='grid grid-cols-6 gap-4 '>
 {
-   Array(5).fill(categories?.[0]).map((category, idx) => (
+   categories?.slice(0,5).map((category:ICategory, idx:number) => (
         <CategoryCard key={idx} category={category} />
     ))
 }

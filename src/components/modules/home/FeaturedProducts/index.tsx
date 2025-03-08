@@ -1,34 +1,28 @@
 import { Button } from "@/components/ui/button";
 import NMContainer from "@/components/ui/core/NMcontainer";
+
 import ProductCard from "@/components/ui/core/ProductCard";
-import { getFlashSaleProducts } from "@/services/FlashSell";
+import { getAllProducts } from "@/services/Product";
 import { IProduct } from "@/types/product";
 
-
 import Link from "next/link";
-import CountDown from "./CountDown";
 
-
-const FlashSale = async () => {
-  const { data: products } = await getFlashSaleProducts();
+const FeaturedProducts = async () => {
+  const { data: products } = await getAllProducts();
 
   return (
     <div className=" bg-white bg-opacity-50 pt-6 pb-8">
       <NMContainer className="my-16">
         <div className="flex items-center justify-between ">
-          <div className="flex items-center gap-8">
-            <h2 className="text-3xl font-bold">Flash Sale</h2>
-            <CountDown />
-          </div>
-
+          <h2 className="text-3xl font-bold">Featured Products</h2>
           <Link href="/products">
             <Button variant="outline" className="rounded-full">
               All Collection
             </Button>
           </Link>
         </div>
-        <div className="grid grid-cols-4 gap-4 mt-10">
-          {products?.slice(0, 4)?.map((product: IProduct, idx: number) => (
+        <div className="grid grid-cols-5 gap-4 mt-10">
+          {products?.slice(0, 5).map((product: IProduct, idx: number) => (
             <ProductCard key={idx} product={product} />
           ))}
         </div>
@@ -37,4 +31,4 @@ const FlashSale = async () => {
   );
 };
 
-export default FlashSale;
+export default FeaturedProducts;
