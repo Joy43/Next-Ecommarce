@@ -33,7 +33,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="border-b w-full">
+    <header className="border-b  w-full">
       <div className="container flex justify-between items-center mx-auto h-16 px-3">
         <Link href="/">
           <h1 className="text-2xl font-black flex items-center">
