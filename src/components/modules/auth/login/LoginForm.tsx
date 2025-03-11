@@ -20,6 +20,7 @@ import { loginSchema } from "./loginValidation";
 import { useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
+import { useUser } from "@/context/userContext";
 
 export default function LoginForm() {
   const form = useForm({
@@ -47,10 +48,11 @@ export default function LoginForm() {
       console.error(err);
     }
   };
-
+const {setIsLoading}=useUser()
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
       const res = await loginUser(data);
+      setIsLoading(true);
       if (res?.success) {
         toast.success(res?.message);
         if(redirect){
@@ -106,7 +108,7 @@ export default function LoginForm() {
 
           <div className="flex mt-3 w-full">
             <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY}
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY || ""}
               onChange={handleReCaptcha}
               className="mx-auto"
             />

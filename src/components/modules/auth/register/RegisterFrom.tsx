@@ -19,6 +19,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registerUser } from "@/services/AuthService";
 import { toast } from "sonner";
 import { registrationSchema } from "./registerValidation";
+import { useUser } from "@/context/userContext";
 
 
 export default function RegisterForm() {
@@ -33,10 +34,11 @@ export default function RegisterForm() {
   const password = form.watch("password");
   const passwordConfirm = form.watch("passwordConfirm");
   //   console.log(password, passwordConfirm);
-
+const {setIsLoading}=useUser()
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
       const res = await registerUser(data);
+      setIsLoading(true);
       if (res?.success) {
         toast.success(res?.message);
       } else {
