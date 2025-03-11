@@ -3,10 +3,8 @@
 import Image from "next/image";
 import emptyCart from "../../../app/assets/empty-cart.png";
 import { useAppSelector } from "@/redux/hook";
-import { orderedProductsSelector } from "@/redux/Features/cartSlice";
-import { IProduct } from "@/types/product";
+import { CartProduct, orderedProductsSelector } from "@/redux/Features/cartSlice";
 import CartProductCard from "./CartProductCart";
-
 
 export default function CartProducts() {
   const products = useAppSelector(orderedProductsSelector);
@@ -25,7 +23,7 @@ export default function CartProducts() {
           </div>
         </div>
       )}
-      {products?.map((product: IProduct) => (
+      {products?.map((product: CartProduct) => (
         <CartProductCard key={product._id} product={product} />
       ))}
     </div>
